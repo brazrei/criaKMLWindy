@@ -78,7 +78,8 @@ function converteLat(lat){
     coords = skyVectorToRedemet(clearCoords(coords))
       
     coords = coords.replace(/[^a-z0-9]/gi,'').replace(/S/g, " - S").replace(/N/g, " - N")
-    coords = coords[0] == " "? coords.slice(2) : coords
+    coords = coords[0] == " "? coords.slice(3) : coords
+    $('#spanCoords').html("Coordenadas extraídas do texto: " + coords)
     coords = coords.split(' - ')
     let coordsSaida = ''
     for (let i in coords){
@@ -87,7 +88,6 @@ function converteLat(lat){
       let long = coords[i].split(' ')[1]
       coordsSaida += converteLong(long) + ',' + converteLat(lat) + ' '
     }
-    $('#spanCoords').html("Coordenadas extraídas do texto: " + coordsSaida)
       
     
     console.log(coordsSaida)
