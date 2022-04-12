@@ -87,6 +87,7 @@ function converteLat(lat){
       let long = coords[i].split(' ')[1]
       coordsSaida += converteLong(long) + ',' + converteLat(lat) + ' '
     }
+    $('#spanCoords').html("Coordenadas extraídas do texto: " + coordsSaida)
       
     
     console.log(coordsSaida)
