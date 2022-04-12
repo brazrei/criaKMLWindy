@@ -34,6 +34,8 @@ function converteLat(lat){
       coords = coords.replace("  ", ' ');
     coords = coords.trimStart();
   
+    coords = coords.replace(/S/g, " - S").replace(/N/g, " - N")
+    coords = coords[0] == " "? coords,slice(2) : coords
     coords = coords.split(' - ')
     let coordsSaida = ''
     for (let i in coords){
