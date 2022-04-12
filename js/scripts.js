@@ -75,7 +75,7 @@ function converteLat(lat){
       coords = coords.replace("  ", ' ');
     coords = coords.trimStart();
   
-    coords = skyVectorToRedemet(clearCoords(coords))
+    coords = skyVectorToRedemet(clearCoords(coords.replace(/W/g," W").replace(/E/g," E")))
       
     coords = coords.replace(/[^a-z0-9]/gi,'').replace(/S/g, " - S").replace(/N/g, " - N")
     coords = coords[0] == " "? coords.slice(3) : coords
