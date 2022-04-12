@@ -77,7 +77,7 @@ function converteLat(lat){
   
     coords = skyVectorToRedemet(clearCoords(coords))
       
-    coords = coords.replace(/S/g, " - S").replace(/N/g, " - N")
+    coords = coords.replace(/[^a-z0-9]/gi,'').replace(/S/g, " - S").replace(/N/g, " - N")
     coords = coords[0] == " "? coords.slice(2) : coords
     coords = coords.split(' - ')
     let coordsSaida = ''
