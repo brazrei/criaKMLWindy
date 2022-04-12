@@ -94,7 +94,7 @@ function converteLat(lat){
     $("#edtCoords").val(inicio+coordsSaida+fim);
   
    $("#edtCoords").select();
-   document.execCommand('copy');
+   //document.execCommand('copy');
 
    download()
   }
