@@ -1,5 +1,46 @@
 var inicio = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><kml xmlns="http://www.opengis.net/kml/2.2" xmlns:ns2="http://www.google.com/kml/ext/2.2" xmlns:ns3="http://www.w3.org/2005/Atom" xmlns:ns4="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Document><Folder><name>ICA:fir</name><Placemark id="fir.fid-6491349e_1752c4a5e31_6c8a"><name>Personalizada</name><description></description><Style><LabelStyle><color>32000000</color><scale>1.0</scale></LabelStyle><LineStyle><color>ffffffff</color><width>0.66</width></LineStyle><PolyStyle><color>00000000</color></PolyStyle></Style><MultiGeometry><Polygon><outerBoundaryIs><LinearRing><tessellate>1</tessellate><coordinates>'
 var fim = '</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry></Placemark></Folder></Document></kml>'
+function clearCoords(c) {
+//  var c = $('#ta1').val().toUpperCase();
+  c = c.replace(/ /g,'').replace(/LAT/g,'').replace(/LONG/g,'').replace(/\//g,'').replace(/-/g,'').replace(/;/g,'').replace(/\W/g, '')
+  console.log(c)
+  return c;
+}
+
+function skyVectorToRedemet(coords) {
+    //console.log(coords)
+    let latLngPatt1 = /\d{6}[nNsS]\d{7}[WwEe]/g
+    let latLngPatt2 = /\d{4}[nNsS]\d{5}[WwEe]/g
+
+    let arrCoords = coords.match(latLngPatt1)
+
+    if (!arrCoords || (arrCoords.length == 0)) {
+        arrCoords = coords.match(latLngPatt2)
+        if (!arrCoords || (arrCoords.length == 0))
+            return coords
+    }
+
+    for (let i in arrCoords) {
+        let icoord = arrCoords[i]
+        let sepLat = "S"
+        if (icoord.includes("N"))
+            sepLat = "N"
+            
+        let sepLon = "W"
+        if (icoord.includes("E"))
+            sepLon = "E"
+            
+        let ilat = icoord.split(sepLat)[0].substr(0, 4)
+        let ilong = icoord.split(sepLat)[1].substr(0, 5)
+        arrCoords[i] = sepLat + ilat + " " + sepLon + ilong
+
+    }
+    if (arrCoords[0] !== arrCoords[arrCoords.length - 1])
+        arrCoords.push(arrCoords[0])
+    return arrCoords.join(" - ")
+
+}
+
 
 function converteLat(lat){
     let sinal = lat[0]=='S'?-1:1;
@@ -34,6 +75,8 @@ function converteLat(lat){
       coords = coords.replace("  ", ' ');
     coords = coords.trimStart();
   
+    coords = skyVectorToRedemet(clearCoords(coords))
+      
     coords = coords.replace(/S/g, " - S").replace(/N/g, " - N")
     coords = coords[0] == " "? coords.slice(2) : coords
     coords = coords.split(' - ')
@@ -72,7 +115,7 @@ function converteLat(lat){
 
   
   function automatico () {
-  setTimeout(formataCoords, 1000);
+  //setTimeout(formataCoords, 1000);
   }
   
-  formataCoords("S0547 W05051 - S0601 W04806 - S0701 W04652 - S0526 W04526 - S0329 W04612 - S0344 W05052 - S0547 W05051")
+  //formataCoords("S0547 W05051 - S0601 W04806 - S0701 W04652 - S0526 W04526 - S0329 W04612 - S0344 W05052 - S0547 W05051")
