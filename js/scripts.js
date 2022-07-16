@@ -1,6 +1,6 @@
 var inicio = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><kml xmlns="http://www.opengis.net/kml/2.2" xmlns:ns2="http://www.google.com/kml/ext/2.2" xmlns:ns3="http://www.w3.org/2005/Atom" xmlns:ns4="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Document>'
-var inicioPoligono = "<Folder><name>ICA:fir</name><Placemark id="fir.fid-6491349e_1752c4a5e31_6c8a"><name>Personalizada</name><description></description><Style><LabelStyle><color>32000000</color><scale>1.0</scale></LabelStyle><LineStyle><color>ffffffff</color><width>0.66</width></LineStyle><PolyStyle><color>00000000</color></PolyStyle></Style><MultiGeometry><Polygon><outerBoundaryIs><LinearRing><tessellate>1</tessellate><coordinates>"
-var fimPoligono = "</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry></Placemark></Folder>"
+var inicioPoligono = '<Folder><name>ICA:fir</name><Placemark id="fir.fid-6491349e_1752c4a5e31_6c8a"><name>Personalizada</name><description></description><Style><LabelStyle><color>32000000</color><scale>1.0</scale></LabelStyle><LineStyle><color>ffffffff</color><width>0.66</width></LineStyle><PolyStyle><color>00000000</color></PolyStyle></Style><MultiGeometry><Polygon><outerBoundaryIs><LinearRing><tessellate>1</tessellate><coordinates>'
+var fimPoligono = '</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry></Placemark></Folder>'
 var fim = '</Document></kml>'
 function clearCoords(c) {
 //  var c = $('#ta1').val().toUpperCase();
