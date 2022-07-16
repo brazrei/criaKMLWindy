@@ -104,7 +104,7 @@ function converteLat(lat){
       if ( coordInicial && c == coordInicial) {
         coordsSaida += fimPoligono
         coordInicial = false
-      } else
+      } else if (!coordInicial)
         coordInicial = c
     }
       
