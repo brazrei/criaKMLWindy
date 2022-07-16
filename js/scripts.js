@@ -97,7 +97,7 @@ function converteLat(lat){
       let c = converteLong(long) + ',' + converteLat(lat) + ' '
 
       if (!coordInicial){
-        coordInicial = coords[i]
+        coordInicial = c
         coordsSaida += inicioPoligono
       } 
       coordsSaida += c 
