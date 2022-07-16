@@ -94,7 +94,7 @@ function converteLat(lat){
       coords[i] = coords[i].replace(/[^a-z0-9]/gi,'').replace(/W/g," W").replace(/E/g," E");
       let lat = coords[i].split(' ')[0]
       let long = coords[i].split(' ')[1]
-      let c += converteLong(long) + ',' + converteLat(lat) + ' '
+      let c = converteLong(long) + ',' + converteLat(lat) + ' '
 
       if (!coordInicial){
         coordInicial = coords[i]
