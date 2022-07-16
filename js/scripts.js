@@ -97,14 +97,15 @@ function converteLat(lat){
       let c = converteLong(long) + ',' + converteLat(lat) + ' '
 
       if (!coordInicial){
-        coordInicial = c
+        //coordInicial = c
         coordsSaida += inicioPoligono
       } 
       coordsSaida += c 
-      if ( c == coordInicial) {
-        coordSaida += fimPoligono
+      if ( coordInicial && c == coordInicial) {
+        coordsSaida += fimPoligono
         coordInicial = false
-      }
+      } else
+        coordInicial = c
     }
       
     
