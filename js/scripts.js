@@ -1,5 +1,7 @@
-var inicio = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><kml xmlns="http://www.opengis.net/kml/2.2" xmlns:ns2="http://www.google.com/kml/ext/2.2" xmlns:ns3="http://www.w3.org/2005/Atom" xmlns:ns4="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Document><Folder><name>ICA:fir</name><Placemark id="fir.fid-6491349e_1752c4a5e31_6c8a"><name>Personalizada</name><description></description><Style><LabelStyle><color>32000000</color><scale>1.0</scale></LabelStyle><LineStyle><color>ffffffff</color><width>0.66</width></LineStyle><PolyStyle><color>00000000</color></PolyStyle></Style><MultiGeometry><Polygon><outerBoundaryIs><LinearRing><tessellate>1</tessellate><coordinates>'
-var fim = '</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry></Placemark></Folder></Document></kml>'
+var inicio = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><kml xmlns="http://www.opengis.net/kml/2.2" xmlns:ns2="http://www.google.com/kml/ext/2.2" xmlns:ns3="http://www.w3.org/2005/Atom" xmlns:ns4="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Document>'
+var inicioPoligono = "<Folder><name>ICA:fir</name><Placemark id="fir.fid-6491349e_1752c4a5e31_6c8a"><name>Personalizada</name><description></description><Style><LabelStyle><color>32000000</color><scale>1.0</scale></LabelStyle><LineStyle><color>ffffffff</color><width>0.66</width></LineStyle><PolyStyle><color>00000000</color></PolyStyle></Style><MultiGeometry><Polygon><outerBoundaryIs><LinearRing><tessellate>1</tessellate><coordinates>"
+var fimPoligono = "</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry></Placemark></Folder>"
+var fim = '</Document></kml>'
 function clearCoords(c) {
 //  var c = $('#ta1').val().toUpperCase();
   c = c.replace(/ /g,'').replace(/LAT/g,'').replace(/LONG/g,'').replace(/\//g,'').replace(/-/g,'').replace(/;/g,'').replace(/\W/g, '')
@@ -60,6 +62,10 @@ function converteLat(lat){
     return sinal * (graus + minutos)
   }
   
+  function separaPoligonos(coords){
+    
+  }
+
   function formataCoords() {
     let coords = $("#edtCoords").val();
     
@@ -81,12 +87,24 @@ function converteLat(lat){
     coords = coords[0] == " "? coords.slice(3) : coords
     $('#spanCoords').html("Coordenadas extraídas do texto: " + coords)
     coords = coords.split(' - ')
+    
     let coordsSaida = ''
+    let coordInicial = false
     for (let i in coords){
       coords[i] = coords[i].replace(/[^a-z0-9]/gi,'').replace(/W/g," W").replace(/E/g," E");
       let lat = coords[i].split(' ')[0]
       let long = coords[i].split(' ')[1]
-      coordsSaida += converteLong(long) + ',' + converteLat(lat) + ' '
+      let c += converteLong(long) + ',' + converteLat(lat) + ' '
+
+      if (!coordInicial){
+        coordInicial = coords[i]
+        coordsSaida += inicioPoligono
+      } 
+      coordsSaida += c 
+      if ( c == coordInicial) {
+        coordSaida += fimPoligono
+        coordInicial = false
+      }
     }
       
     
