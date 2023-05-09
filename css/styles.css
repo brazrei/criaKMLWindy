@@ -17,6 +17,12 @@ button {
 
 span {
   font-size : 20px;
-  style : bold;
+}
+
+.bold {
+  font-weight : bold;
+
+}
+.red {
   color : red;
 }

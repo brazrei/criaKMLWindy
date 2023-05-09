@@ -1,22 +1,44 @@
 <html>
+
 <head>
   <meta charset="UTF-8">
   <link rel="icon" href="png/polygon.png">
 </head>
 
-<link rel="stylesheet" href="css/styles.css" type='text/css'/>
+<link rel="stylesheet" href="css/styles.css" type='text/css' />
 <script src="js/scripts.js" type="text/javascript"></script>
 <script src="js/jquery.min.js" type="text/javascript"></script>
 <title>Criador de Arquivos KML para uso no Windy</title>
+
 <body>
   <h1>Criar Arquivo KML para uso no Windy</h1>
-  <span id = "spanCoords">Exemplo: <br> S2730 W04755 - S2845 W04755 - S2845 W04709 - S2730 W04709 - S2730 W04755 "NOME DA ÁREA 1", <br>
-    S2730 W04709 - S2845 W04709 - S2845 W04623 - S2730 W04623 - S2730 W04709 "NOME DA ÁREA 2", <br> 
-    S2730 W04755 - S2700 W04755 - S2700 W04623 - S2730 W04623 - S2730 W04755 "NOME DA ÁREA 3"</span> </br><textarea id="edtCoords" class="inputCoords" onpaste="automatico()"></textarea>
+  <span class="bold">
+    Exemplo (1):
+  </span>
+  <span class="red"> <br> S2730 W04755 - S2845 W04755 - S2845 W04709 - S2730 W04709 - S2730 W04755 <b>"NOME DA ÁREA
+      1"</b>, <br>
+    S2730 W04709 - S2845 W04709 - S2845 W04623 - S2730 W04623 - S2730 W04709 <b>"NOME DA ÁREA 2"</b>, <br>
+    S2730 W04755 - S2700 W04755 - S2700 W04623 - S2730 W04623 - S2730 W04755 <b>"NOME DA ÁREA 3"</b> <br>
+    <br>
+  </span>
+  <span class = "bold">
+    Exemplo (2): <br>
+  </span>
+  <span class = "red">
+    1- 06º07,68'S/035°05,92'W.<br>
+    2- 06°07,68'S/034°28,31'W.<br>
+    3- 06°28,96'S/034°06,01'W.<br>
+    4- 06°28,69'S/035°06,01'W. <b> "ÁREA XXXXX" </b>
+  </span> <br><br>
+  <span id="spanCoords">
+
+  </span>
+  <textarea id="edtCoords" class="inputCoords" onpaste="automatico()"></textarea>
   </br>
   <button onclick="formataCoords()">Criar</button>
   </br>
   <h4>Desenvolvido por: Reinaldo Braz.</h4>
   <h5>Email: brazrab@fab.mil.br</h5>
 </body>
+
 </html>
