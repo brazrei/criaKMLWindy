@@ -163,5 +163,13 @@ function download() {
 function automatico() {
   //setTimeout(formataCoords, 1000);
 }
+window.addEventListener('load', function () {
+  limpar()
+})
+
+function limpar() {
+  document.getElementById('edtCoords').value = ''
+  document.getElementById('spanCoords').innerHTML = ''
+}
 
   //formataCoords("S0547 W05051 - S0601 W04806 - S0701 W04652 - S0526 W04526 - S0329 W04612 - S0344 W05052 - S0547 W05051")
